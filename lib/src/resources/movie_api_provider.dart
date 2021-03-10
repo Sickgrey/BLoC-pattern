@@ -11,9 +11,7 @@ class MovieApiProvider {
   final _baseUrl = 'http://api.themoviedb.org/3/movie';
 
   Future<ItemModel> fetchMovieList() async {
-    print("entered");
     final response = await client.get("$_baseUrl/popular?api_key=$_apiKey");
-    print(response.body.toString());
     if (response.statusCode == 200) {
       return ItemModel.fromJson(json.decode(response.body));
     } else {
